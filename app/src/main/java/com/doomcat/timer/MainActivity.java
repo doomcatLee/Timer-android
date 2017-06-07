@@ -1,5 +1,6 @@
 package com.doomcat.timer;
 
+import android.graphics.Canvas;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @BindView(R.id.timeTextView)
     TextView mTime;
 
-    Timer timer = new Timer();
+    Timer timer = new Timer(60);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
