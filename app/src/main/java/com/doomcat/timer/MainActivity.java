@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (savedInstanceState != null){
             timer.seconds = savedInstanceState.getInt("seconds");
             timer.running = savedInstanceState.getBoolean("running");
+            timer.wasRunning = savedInstanceState.getBoolean("wasRunning");
         }
         timer.runTimer(mTime);
 
