@@ -33,10 +33,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        timer.runTimer(mTime);
         mStartButton.setOnClickListener(this);
         mStopButton.setOnClickListener(this);
         mResetButton.setOnClickListener(this);
+
+        if (savedInstanceState != null){
+            timer.seconds = savedInstanceState.getInt("seconds");
+            timer.running = savedInstanceState.getBoolean("running");
+        }
+        timer.runTimer(mTime);
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState){
+        savedInstanceState.putInt("seconds",timer.seconds);
+        savedInstanceState.putBoolean("running",timer.running);
+        savedInstanceState.putBoolean("wasRunning", timer.wasRunning);
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        timer.wasRunning = timer.running;
+        timer.running = false;
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        if (timer.wasRunning){
+            timer.running = true;
+        }
     }
 
 

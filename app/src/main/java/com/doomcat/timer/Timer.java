@@ -6,8 +6,9 @@ import android.widget.TextView;
 
 public class Timer {
 
-    private int seconds = 0;
-    private boolean running;
+    public int seconds = 0;
+    public boolean running;
+    public boolean wasRunning;
 
 
     public void runTimer(final TextView v){
