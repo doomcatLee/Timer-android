@@ -25,7 +25,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @BindView(R.id.timeTextView)
     TextView mTime;
 
-    Timer timer = new Timer(60);
+    @BindView(R.id.circleTextView)
+    TextView mCircle;
+
+
+    Timer timer = new Timer(2600);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             timer.running = savedInstanceState.getBoolean("running");
             timer.wasRunning = savedInstanceState.getBoolean("wasRunning");
         }
-        timer.runTimer(mTime);
+        timer.runTimer(mTime,mCircle);
 
     }
 
@@ -66,8 +70,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             timer.running = true;
         }
     }
-
-
 
     @Override
     public void onClick(View v) {
